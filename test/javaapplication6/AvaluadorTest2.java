@@ -13,12 +13,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 /**
  *
  * @author Sophia Patrice
  */
+@RunWith (Parameterized.class)
 public class AvaluadorTest2 {
     
     private Estudiant instanceEstudiant;
@@ -39,14 +41,9 @@ public class AvaluadorTest2 {
     
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
-        
-        
         Object[][] data = new Object[][] {
             {"Anna", 6.0, 7.0, 8.0, 7.0} , 
-            {"John", 1.0, 0.0, 0.0, 0.1  }
-
-            
-            
+            {"John", 1.0, 0.0, 0.0, 0.3  }
         };
         
         return Arrays.asList(data);
