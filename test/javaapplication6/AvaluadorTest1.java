@@ -5,8 +5,6 @@
  */
 package javaapplication6;
 
-import java.util.Arrays;
-import java.util.Collection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -14,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Ignore;
-import org.junit.runners.Parameterized;
+
 
 /**
  *
@@ -46,6 +44,8 @@ public class AvaluadorTest1 {
     
     @After
     public void tearDown() {
+        instanceAvaluador = null;
+        instanceEstudiant = null; 
     }
     
     
@@ -61,7 +61,7 @@ public class AvaluadorTest1 {
     
     @Test
     public void testMillorEstudiantPerNotaMitjana() throws Exception {
-        assertEquals(7,instanceAvaluador.millorEstudiantPerNotaMitjana(),1.0E-2);
+
     }
     
 }

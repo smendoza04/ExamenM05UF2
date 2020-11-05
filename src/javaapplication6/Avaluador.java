@@ -31,11 +31,11 @@ public class Avaluador {
 
     public Avaluador(double notaMaxima, double notaMinima, double notaSupera) throws Exception {
         if (notaMinima >= notaMaxima) {
-            throw new Exception("Nota mínima " + notaMinima + " no pot ser major que nota màxima " + notaMaxima);
+            throw new Exception("Nota mínima " + notaMinima + " no pot ser major que nota màxima " + notaMaxima, new IllegalAccessException());
         }
 
         if (notaSupera < notaMinima || notaSupera > notaMaxima) {
-            throw new Exception("Nota supera" + notaSupera + " no pot ser menor que nota mínima " + notaMinima + " ni major que nota màxima " + notaMaxima);
+            throw new Exception("Nota supera " + notaSupera + " no pot ser menor que nota mínima " + notaMinima + " ni major que nota màxima " + notaMaxima, new IllegalAccessException());
         }
 
         this.notaMaxima = notaMaxima;
@@ -60,7 +60,8 @@ public class Avaluador {
         double sumaNotes = 0 ;
 
         if (estudiant == null) {
-            throw new Exception("Estudiant no pot ser null");
+            throw new Exception("Estudiant no pot ser null", 
+                new IllegalAccessException());
         }
 
         if (estudiant.getPrimerParcial() >= notaSupera) {
@@ -89,7 +90,8 @@ public class Avaluador {
         double sumaNotes;
 
         if (estudiant == null) {
-            throw new Exception("Estudiant no pot ser null");
+            throw new Exception("Estudiant no pot ser null", 
+                new IllegalAccessException());
         }
 
         sumaNotes = estudiant.getPrimerParcial()
@@ -113,7 +115,7 @@ public class Avaluador {
         double millorNota = 0;
 
         
-        for (int i = 0; i < n - 1; i++) {
+        for (int i = 0; i < n; i++) {
             try {
                 double nota = mitjana(estudiants[i]);
                 if (nota > millorNota) {

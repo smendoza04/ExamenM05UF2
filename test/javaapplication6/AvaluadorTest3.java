@@ -5,19 +5,30 @@
  */
 package javaapplication6;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.Timeout;
 
 /**
  *
  * @author Sophia Patrice
  */
 public class AvaluadorTest3 {
+    private Estudiant instanceEstudiant;
+    private Avaluador instanceAvaluador;
     
+    @Rule
+   public final ExpectedException exception = ExpectedException.none();
+   
+   @Rule 
+   public Timeout timeout = Timeout.millis(250);
     public AvaluadorTest3() {
     }
     
@@ -30,56 +41,40 @@ public class AvaluadorTest3 {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
+        instanceAvaluador = new Avaluador();
+        instanceEstudiant = null; 
     }
     
     @After
     public void tearDown() {
+        instanceAvaluador = null;
+        instanceEstudiant = null; 
     }
 
     /**
      * Test of mitjanaSiSupera method, of class Avaluador.
+     * @throws java.lang.Exception
      */
     @Test
     public void testMitjanaSiSupera() throws Exception {
-        System.out.println("mitjanaSiSupera");
-        Estudiant estudiant = null;
-        Avaluador instance = new Avaluador();
-        double expResult = 0.0;
-        double result = instance.mitjanaSiSupera(estudiant);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        exception.expect(Exception.class);
+        exception.expectCause(CoreMatchers.isA(IllegalAccessException.class));
+        exception.expectMessage("Estudiant no pot ser null");
+        instanceAvaluador.mitjanaSiSupera(null);
     }
 
     /**
      * Test of mitjana method, of class Avaluador.
+     * @throws java.lang.Exception
      */
     @Test
     public void testMitjana() throws Exception {
-        System.out.println("mitjana");
-        Estudiant estudiant = null;
-        Avaluador instance = new Avaluador();
-        double expResult = 0.0;
-        double result = instance.mitjana(estudiant);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        exception.expect(Exception.class);
+        exception.expectCause(CoreMatchers.isA(IllegalAccessException.class));
+        exception.expectMessage("Estudiant no pot ser null");
+        instanceAvaluador.mitjana(null);
     }
 
-    /**
-     * Test of millorEstudiantPerNotaMitjana method, of class Avaluador.
-     */
-    @Test
-    public void testMillorEstudiantPerNotaMitjana() {
-        System.out.println("millorEstudiantPerNotaMitjana");
-        Estudiant[] estudiants = null;
-        Avaluador instance = new Avaluador();
-        Estudiant expResult = null;
-        Estudiant result = instance.millorEstudiantPerNotaMitjana(estudiants);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
 }

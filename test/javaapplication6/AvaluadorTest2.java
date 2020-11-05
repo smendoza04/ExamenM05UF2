@@ -5,18 +5,52 @@
  */
 package javaapplication6;
 
+import java.util.Arrays;
+import java.util.Collection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runners.Parameterized;
 
 /**
  *
  * @author Sophia Patrice
  */
 public class AvaluadorTest2 {
+    
+    private Estudiant instanceEstudiant;
+    private Avaluador instanceAvaluador;
+    
+    @Parameterized.Parameter(0)
+    public String name;
+    @Parameterized.Parameter(1)
+    public double firstSem;
+    @Parameterized.Parameter(2)
+    public double secondSem;
+    @Parameterized.Parameter(3)
+    public double thirdSem;
+    @Parameterized.Parameter(4)
+    public double median;
+
+
+    
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
+        
+        
+        Object[][] data = new Object[][] {
+            {"Anna", 6.0, 7.0, 8.0, 7.0} , 
+            {"John", 1.0, 0.0, 0.0, 0.1  }
+
+            
+            
+        };
+        
+        return Arrays.asList(data);
+    }
     
     public AvaluadorTest2() {
     }
@@ -30,7 +64,9 @@ public class AvaluadorTest2 {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
+        instanceAvaluador = new Avaluador(10,0,5);
+        instanceEstudiant = new Estudiant(name, firstSem, secondSem, thirdSem); 
     }
     
     @After
@@ -39,32 +75,20 @@ public class AvaluadorTest2 {
 
     /**
      * Test of mitjanaSiSupera method, of class Avaluador.
+     * @throws java.lang.Exception
      */
     @Test
     public void testMitjanaSiSupera() throws Exception {
-        System.out.println("mitjanaSiSupera");
-        Estudiant estudiant = null;
-        Avaluador instance = new Avaluador();
-        double expResult = 0.0;
-        double result = instance.mitjanaSiSupera(estudiant);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(median,instanceAvaluador.mitjanaSiSupera(instanceEstudiant),1.0E-2);
     }
 
     /**
      * Test of mitjana method, of class Avaluador.
+     * @throws java.lang.Exception
      */
     @Test
     public void testMitjana() throws Exception {
-        System.out.println("mitjana");
-        Estudiant estudiant = null;
-        Avaluador instance = new Avaluador();
-        double expResult = 0.0;
-        double result = instance.mitjana(estudiant);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(median,instanceAvaluador.mitjana(instanceEstudiant),1.0E-2);
     }
 
     /**
@@ -72,14 +96,7 @@ public class AvaluadorTest2 {
      */
     @Test
     public void testMillorEstudiantPerNotaMitjana() {
-        System.out.println("millorEstudiantPerNotaMitjana");
-        Estudiant[] estudiants = null;
-        Avaluador instance = new Avaluador();
-        Estudiant expResult = null;
-        Estudiant result = instance.millorEstudiantPerNotaMitjana(estudiants);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
     
 }
